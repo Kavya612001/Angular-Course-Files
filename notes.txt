@@ -1,0 +1,13 @@
+Angular is framework used to create reactive single page application
+
+Angular JS (Angular 1) - totaly different 
+Angular 2 - completely rewritten
+
+we dont use angular JS anymore
+
+Angular 3 - skipped
+Angular4,...12 - small incremental changes
+
+node js - is a server side language 
+node js is used behind the scenes to bundle up
+angular cli uses this node js
