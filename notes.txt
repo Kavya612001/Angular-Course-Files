@@ -11,3 +11,116 @@ Angular4,...12 - small incremental changes
 node js - is a server side language 
 node js is used behind the scenes to bundle up
 angular cli uses this node js
+
+>> npm install -g @angular/cli@latest  //installs the latest version of angular cli 
+
+>>ng new <proj-name> --no-strict 
+angular uses typescript , which is compiled to JS
+
+>> cd proj-name
+>> ng serve // runs ur build 
+runs on localhost:4200
+
+package.json contains all the dependencies
+node_modules - dependences are here
+
+Angular apps are built with components
+Directives - ngModule 
+Dependency Injection - used for communication between the components
+Angular cannot connect to the db directly 
+
+Typescript - types, classes and interfaces
+strongly typed - checked at typing and not at run time
+
+TS -> JS (compiled to)
+>> npm install --save bootstrap@3
+in the angular.json in the styles array include 
+"node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+main.ts -> this is where the execution strictTemplates
+AppModule is bootstraped
+index.html is executed 
+
+Each component has its own hrml, css and business application, same component can be used more than once
+(reuasble)
+
+CLI to create a new component
+>>ng g c 
+
+selectors must be unique
+
+data binding - communication
+TS (Business Logic) -> Template (HTML)
+String interpolation - {{data}}
+property binding [property] = "data"
+Event binding - (event) = "expression"
+Two way binding - [(ngModel)] = "data"
+
+For two way data binding to work, we need to import the FormsModule
+
+Directives - are instructions in the DOM
+Components is one such Directive
+
+*ngIf - structural Directive, changes the dom dynamically 
+
+    <p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+    <ng-template #noServer>
+        <p>No server was created</p>
+    </ng-template>
+
+[ngStyle] - attribute directive, it does not change the DOM 
+used to dynamically add or remove styles
+
+[ngClass] - is used to dynamically add or remove classes
+
+*ngFor - structural directive, modifies the DOM
+
+To skip the test file while creattion of component
+>> ng g c comp-name --skip-test
+
+Custom property binding - we can bind properties and events to our own HTML components
+EventEmitter in typescript is used to emit our own events
+
+Lifecycle
+ngOnChanges - called after the bound input property changes
+ngOnInit - called once the component is initialized, runs after the constructor
+ngDoCheck - called during every change detection occurs
+ngAfterContentInit - called after ngContent has been projected into view
+ngAfterContentChecked - called every time the projected content has been checked
+ngAfterViewInit - called after the component's view (and child views) has been initialzed
+ngAfterViewChecked - called everytime the view (and child views) has been checked
+ngOnDestroy - called just before the object will be destroyed by angular 
+
+Directives - attribute vs structural directives 
+attr - looks like normal HTML element 
+only affect or change the element they are added to 
+
+structural directives - looks like normal html attr but has * symbol 
+affects the whole area in the DOM (elements get added/removed)
+
+we cant have more than one structural directive on the same element
+
+Newly created custom directives need to be added to the declarations array in the app.module.ts file
+name.directive.ts - filename for the newly created directive
+using Renderer2 is preferable for DOM access
+
+we can create custom structural directive also
+
+Serives - to avoid duplication of code and storage , centralize the code
+
+serviceName.service.ts
+service doesnot contain any decorator
+
+dont instantiate a service 
+- inject in the constructor 
+providers: [LoggingService] , need to add to the providers array 
+
+Hierarchical Injector
+
+AppModule - same instance of the service is available application wide
+AppComponent - same instance of the service is available for all the components and its child components
+Any other componnet - same instance if available for the components and all its child components
+
+@Injectable({}) - need to be added in service when we need to inject something into the service
+
+
