@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="projForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="projName">Project Name</label>
+          <input 
+          type="text" 
+          id="projName" 
+          class="form-control"
+          formControlName="projName">
+          <span 
+          class="help-blocks"
+          *ngIf="projForm.get('projName').invalid && projForm.get('projName').touched">
+          <span *ngIf="projForm.get('projName').errors['projNameIsForbidden']">Project name cant be Test</span>
+          <span *ngIf="projForm.get('projName').errors['required']">Please enter a valid project name</span>
+         </span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+          type="email" 
+          id="email" 
+          class="form-control"
+          formControlName="email">
+          <span 
+          class="help-blocks"
+          *ngIf="projForm.get('email').invalid && projForm.get('email').touched">Please enter a valid email</span>
+        </div>
+        <div class="form-group">
+          <label for="projStatus">Project Status</label>
+          <select 
+          name="projStatus" 
+          id="projStatus"
+          class="form-control"
+          formControlName="projStatus">
+            <option [value]="status" *ngFor="let status of projStatus">{{status}}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" [disabled]="!projForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
